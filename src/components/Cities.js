@@ -8,7 +8,7 @@ export default function Cities(props) {
 
   const handleClick = () => {
     console.log(`${city.name} is clicked.!`);
-    setClicked(true);
+    setClicked(!clicked);
   };
 
   return (
