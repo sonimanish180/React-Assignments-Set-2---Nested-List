@@ -1,7 +1,6 @@
 import React, { Component, useState } from "react";
 import "./../styles/App.css";
-// import Cities from "./Cities";
-// import States from "./States";
+import States from "./States.js";
 
 // Do not alter the states const and values inside it.
 const states = [
@@ -156,45 +155,34 @@ const states = [
   }
 ];
 
-// let id = 0;
+let id = 0;
+for (let state of states) {
+  id++;
+  state.id = `state${id}`;
 
-console.log(states);
+  let cityId = 0;
+  for (let city of state.cities) {
+    cityId++;
+    city.id = `city${cityId}`;
+
+    let townId = 0;
+    for (let town of city.towns) {
+      townId++;
+      town.id = `town${townId}`;
+    }
+  }
+}
 
 function App() {
   console.log("entered");
-  // const [display, setDisplay] = React.useState(true);
-  // for (let state of states) {
-  //   id++;
-  //   state.id = id;
-  //   state.display = display;
-
-  //   let cityId = 0;
-  //   for (let city of state.cities) {
-  //     cityId++;
-  //     city.id = cityId;
-  //     city.display = display;
-
-  //     let townId = 0;
-  //     for (let town of city.towns) {
-  //       townId++;
-  //       town.id = townId;
-  //       town.display = display;
-  //     }
-  //   }
-  // console.log(state.id);
-  // }
-  // const handleClick = (state) => {
-  //   console.log(`${state} is clicked.!`);
-  //   setDisplay(false);
-  //   state.display = false;
-  // };
-
   return (
     <>
       <div id="main"></div>
-      {console.log("ENtered render in App")}
-
-      {/* <Cities /> */}
+      <div>
+        {states.map((state) => (
+          <States key={state.id} state={state} />
+        ))}
+      </div>
     </>
   );
 }

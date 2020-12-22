@@ -1,9 +1,7 @@
-import React, { Component, useState } from "react";
-
 function States(props) {
   const [display, setDisplay] = React.useState(true);
   let id = 0;
-  let states = this.props.states;
+  let states = props.states;
   for (let state of states) {
     id++;
     state.id = id;
