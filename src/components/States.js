@@ -15,7 +15,7 @@ export default function States(props) {
 
   return (
     <>
-      <h1 id={`state${state.id}`} onClick={() => handleClick()}>
+      <h1 id={state.id} onClick={() => handleClick()}>
         {state.name}
       </h1>
       <div>

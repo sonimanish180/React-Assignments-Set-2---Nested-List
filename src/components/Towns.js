@@ -9,7 +9,7 @@ export default function Towns(props) {
 
   return (
     <>
-      <h5 key={town.id} id={`state${town.id}`} onClick={() => handleClick()}>
+      <h5 key={town.id} id={town.id} onClick={() => handleClick()}>
         {town.name}
       </h5>
     </>

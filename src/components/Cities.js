@@ -13,7 +13,7 @@ export default function Cities(props) {
 
   return (
     <>
-      <h3 key={city.id} id={`state${city.id}`} onClick={() => handleClick()}>
+      <h3 key={city.id} id={city.id} onClick={() => handleClick()}>
         {city.name}
       </h3>
       <div>
