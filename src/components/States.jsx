@@ -1,0 +1,74 @@
+import React, { Component, useState } from "react";
+
+function States(props) {
+  const [display, setDisplay] = React.useState(true);
+  let id = 0;
+  let states = this.props.states;
+  for (let state of states) {
+    id++;
+    state.id = id;
+    state.display = display;
+
+    let cityId = 0;
+    for (let city of state.cities) {
+      cityId++;
+      city.id = cityId;
+      city.display = display;
+
+      let townId = 0;
+      for (let town of city.towns) {
+        townId++;
+        town.id = townId;
+        town.display = display;
+      }
+    }
+    // console.log(state.id);
+  }
+  const handleClick = (state) => {
+    console.log(`${state} is clicked.!`);
+    setDisplay(false);
+    state.display = false;
+  };
+
+  return (
+    <>
+      <div id="main">
+        {states.map((state) => (
+          <div>
+            <h1
+              key={state.id}
+              id={`state${state.id}`}
+              onClick={() => handleClick(state)}
+            >
+              {state.name}
+            </h1>
+            <div>
+              {state.cities.map((city) => (
+                <div hidden={state.display}>
+                  <h3
+                    key={city.id}
+                    id={`city${city.id}`}
+                    onClick={() => handleClick(city.name)}
+                  >
+                    {city.name}
+                  </h3>
+                  <div>
+                    {city.towns.map((town) => (
+                      <div hidden={town.display}>
+                        <h5 key={town.id} id={`town${town.id}`}>
+                          {town.name}
+                        </h5>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
+  );
+}
+
+export default States;
